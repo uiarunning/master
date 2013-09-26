@@ -2,7 +2,7 @@
 #import "login_functions.js"
 
 //begin_logging
-var testName = "*** Nike+ Running : Log In ***"
+var testName = "*** Nike+ Running : Start A Run ***"
 UIALogger.logStart(testName);
 
 //sample_message
@@ -14,11 +14,12 @@ var password = "Passw0rd"; //enter the password
 
 //begin_login
 target.delay(3);
-checkForGetStarted();
+//checkForGetStarted();
 
-//sample_screen_capture
-target.delay(5);
-captureScreen("login")
-
-//end_logging
-UIALogger.logPass(testName);
+//
+target.delay(3);
+navBarTap();
+target.delay(3);
+navHomeTap();
+target.delay(3);
+startRunTap();

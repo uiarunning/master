@@ -29,6 +29,15 @@ var navBarTap = function () {
 	app.navigationBar().buttons()["common.navigation.button.menu"].tap();
 }
 
+var navHomeTap = function () {
+	app.mainWindow().tableViews()["Empty list"].cells()["menu.section1.button.home"].tap();
+}
+
 var navSettingsTap = function () {
 	app.mainWindow().tableViews()["Empty list"].cells()["menu.section1.settings"].tap();
+}
+
+//other_buttons
+var startRunTap = function () {
+	app.navigationBar().elements()["common.navigation.button.run"].tap();
 }
