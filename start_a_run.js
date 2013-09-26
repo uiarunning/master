@@ -9,12 +9,12 @@ UIALogger.logStart(testName);
 logMessage("Ya'll want this party started quickly, right?");
 
 //login_credentials
-var username = "edwin@botomat.com"; //enter the username you want to use
-var password = "Passw0rd"; //enter the password
+var username = "yuppy@guppy.com"; //enter the username you want to use
+var password = "Nike1234"; //enter the password
 
 //begin_login
 target.delay(3);
-//checkForGetStarted();
+checkForGetStarted();
 
 //
 target.delay(3);
