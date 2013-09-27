@@ -18,14 +18,14 @@ function cleanLogin(username, password){
 	//begin_login
 	target.delay(3);
 	if(checkForGetStartedScreen()){
-		logIn();
+		logIn(user_login, user_password);
 	}
 	else if (checkForLoginScreen()){
-		logIn();	
+		logIn(user_login, user_password);	
 	}
 	else {
 		logOut();
-		logIn();
+		logIn(user_login, user_password);
 	}
 
 	//sample_screen_capture
@@ -54,11 +54,11 @@ function checkForLoginScreen() {
 	target.delay(0.5);
 	navSettingsTap();
 	target.delay(0.5);
-	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid())
-		{
+	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid()){
 			window.tableViews()[1].buttons()["settings signin button"].tap();
 			target.delay(3.5);
 			return true;
+		}
 	return false;
 }
 
