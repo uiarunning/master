@@ -1,34 +1,65 @@
-//check_for_get_started
-function checkForGetStarted() {
+
+var user_login = "yuppy@guppy.com"; // default username used when none is passed to cleanLogin function
+var user_password = "Nike1234"; // default username used when none is passed to cleanLogin function
+
+// run through entire login process 
+function cleanLogin(username, password){
+
+	//begin_logging
+	var testName = "*** Nike+ Running : Log In ***"
+	UIALogger.logStart(testName);
+
+	// check if we were passed custom login info, use defaults if not
+	if (username && password){
+		var user_login = username;
+		var user_password = password;
+	}
+
+	//begin_login
+	target.delay(3);
+	if(checkForGetStartedScreen()){
+		logIn(user_login, user_password);
+	}
+	else if (checkForLoginScreen()){
+		logIn(user_login, user_password);	
+	}
+	else {
+		logOut();
+		logIn(user_login, user_password);
+	}
+
+	//sample_screen_capture
+	target.delay(5);
+	captureScreen("login")
+
+	//end_logging
+	UIALogger.logPass(testName);
+}
+
+
+// Check for get started screen
+function checkForGetStartedScreen() {
 	if (window.buttons()["TourTheApp"].checkIsValid())
 		{
 			window.buttons()[1].tap();
 			target.delay(5);
-			logIn();
+			return true;
 		}
-	else
-		{
-			checkForLogin();
-		}
+	return false;
 }
 
 //check_for_login
-function checkForLogin() {
+function checkForLoginScreen() {
 	navBarTap();
 	target.delay(0.5);
 	navSettingsTap();
 	target.delay(0.5);
-	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid())
-		{
+	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid()){
 			window.tableViews()[1].buttons()["settings signin button"].tap();
 			target.delay(3.5);
-			logIn();
+			return true;
 		}
-	else
-		{
-			logOut();
-			logIn();
-		}
+	return false;
 }
 
 //logout
@@ -45,15 +76,15 @@ function logOut() {
 }
 
 //login
-function logIn() {
+function logIn(uname, pw) {
 	window.scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.46, y:0.21}});
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].textFields()[0].tap();
-	app.keyboard().typeString(username);
+	app.keyboard().typeString(uname);
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].secureTextFields()[0].tap();
 	target.delay(1);
-	app.keyboard().typeString(password);
+	app.keyboard().typeString(pw);
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].buttons()["Log in"].tap();
 }

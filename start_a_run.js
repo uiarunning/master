@@ -1,4 +1,4 @@
-#import "vars.js"
+#import "helper_functions.js"
 #import "login_functions.js"
 
 //begin_logging
