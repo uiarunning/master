@@ -4,10 +4,6 @@ user_password = "Nike1234"; // default username used when none is passed to clea
 // run through entire login process 
 function cleanLogin(username, password){
 
-	//begin_logging
-	var testName = "*** Nike+ Running : Log In ***"
-	UIALogger.logStart(testName);
-
 	// check if we were passed custom login info, use defaults if not
 	if (username && password){
 		user_login = username;
@@ -26,13 +22,6 @@ function cleanLogin(username, password){
 		logOut();
 		logIn(user_login, user_password);
 	}
-
-	//sample_screen_capture
-	target.delay(5);
-	captureScreen("login")
-
-	//end_logging
-	UIALogger.logPass(testName);
 }
 
 
@@ -58,11 +47,13 @@ function checkForLoginScreen() {
 			target.delay(3.5);
 			return true;
 		}
+	logMessage ("You are currently logged in.");
 	return false;
 }
 
 //logout
 function logOut() {
+	logMessage ("App will now log out.");
 	window.tableViews()[1].tapWithOptions({tapOffset:{x:0.93, y:0.08}});
 	target.delay(0.5);
 	app.navigationBar().buttons()["account.navigation.button.logout"].tap();
@@ -76,6 +67,7 @@ function logOut() {
 
 //login
 function logIn(uname, pw) {
+	logMessage ("App will now log in.");
 	window.scrollViews()[0].webViews()[0].tapWithOptions({tapOffset:{x:0.46, y:0.21}});
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].textFields()[0].tap();
