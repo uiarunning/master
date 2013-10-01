@@ -1,6 +1,5 @@
-
-var user_login = "yuppy@guppy.com"; // default username used when none is passed to cleanLogin function
-var user_password = "Nike1234"; // default username used when none is passed to cleanLogin function
+user_login = "yuppy@guppy.com"; // default username used when none is passed to cleanLogin function
+user_password = "Nike1234"; // default username used when none is passed to cleanLogin function
 
 // run through entire login process 
 function cleanLogin(username, password){
@@ -11,8 +10,8 @@ function cleanLogin(username, password){
 
 	// check if we were passed custom login info, use defaults if not
 	if (username && password){
-		var user_login = username;
-		var user_password = password;
+		user_login = username;
+		user_password = password;
 	}
 
 	//begin_login
