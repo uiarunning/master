@@ -2,20 +2,19 @@ user_login = "yuppy@guppy.com"; // default username used when none is passed to 
 user_password = "Nike1234"; // default username used when none is passed to cleanLogin function
 
 // run through entire login process 
-function cleanLogin(username, password){
-
+function cleanLogin(username, password) {
 	// check if we were passed custom login info, use defaults if not
-	if (username && password){
+	if (username && password) {
 		user_login = username;
 		user_password = password;
 	}
 
 	//begin_login
 	target.delay(3);
-	if(checkForGetStartedScreen()){
+	if (checkForGetStartedScreen()) {
 		logIn(user_login, user_password);
 	}
-	else if (checkForLoginScreen()){
+	else if (checkForLoginScreen()) {
 		logIn(user_login, user_password);	
 	}
 	else {
@@ -27,12 +26,11 @@ function cleanLogin(username, password){
 
 // Check for get started screen
 function checkForGetStartedScreen() {
-	if (window.buttons()["TourTheApp"].checkIsValid())
-		{
-			window.buttons()[1].tap();
-			target.delay(5);
-			return true;
-		}
+	if (window.buttons()["TourTheApp"].checkIsValid()) {
+		window.buttons()[1].tap();
+		target.delay(5);
+		return true;
+	}
 	return false;
 }
 
@@ -42,11 +40,11 @@ function checkForLoginScreen() {
 	target.delay(0.5);
 	navSettingsTap();
 	target.delay(0.5);
-	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid()){
-			window.tableViews()[1].buttons()["settings signin button"].tap();
-			target.delay(3.5);
-			return true;
-		}
+	if (window.tableViews()[1].buttons()["settings signin button"].checkIsValid()) {
+		window.tableViews()[1].buttons()["settings signin button"].tap();
+		target.delay(3.5);
+		return true;
+	}
 	logMessage ("You are currently logged in.");
 	return false;
 }
@@ -62,7 +60,6 @@ function logOut() {
 	target.delay(1.5);
 	window.buttons()[1].tap();
 	target.delay(3.5);
-
 }
 
 //login
@@ -78,4 +75,4 @@ function logIn(uname, pw) {
 	app.keyboard().typeString(pw);
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].buttons()["Log in"].tap();
-}
+} 
