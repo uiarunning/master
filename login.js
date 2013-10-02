@@ -1,24 +1,17 @@
-#import "vars.js"
+#import "helper_functions.js"
 #import "login_functions.js"
 
 //begin_logging
 var testName = "*** Nike+ Running : Log In ***"
 UIALogger.logStart(testName);
 
-//sample_message
-logMessage("Ya'll want this party started quickly, right?");
-
-//login_credentials
-var username = "edwin@botomat.com"; //enter the username you want to use
-var password = "Passw0rd"; //enter the password
-
 //begin_login
-target.delay(3);
-checkForGetStarted();
+cleanLogin("yuppy@guppy.com", "Nike1234");
 
 //sample_screen_capture
 target.delay(5);
-captureScreen("login")
+logMessage ("Taking Screen Capture");
+captureScreen("login_screen_capture")
 
 //end_logging
 UIALogger.logPass(testName);
