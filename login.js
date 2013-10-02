@@ -6,12 +6,26 @@ var testName = "*** Nike+ Running : Log In ***"
 UIALogger.logStart(testName);
 
 //begin_login
-cleanLogin("yuppy@guppy.com", "Nike1234");
+cleanLogin("edwin@botomat.com", "Passw0rd");
 
 //sample_screen_capture
 target.delay(5);
 logMessage ("Taking Screen Capture");
 captureScreen("login_screen_capture")
 
-//end_logging
-UIALogger.logPass(testName);
+//navigate_to_settings
+navBarTap();
+navSettingsTap();
+window.tableViews()[1].tapWithOptions({tapOffset:{x:0.92, y:0.08}});
+
+//verify_email
+function verifyEmail() {
+	if (window.tableViews()[2].staticTexts()[user_login].checkIsValid()) {
+		UIALogger.logPass(testName);
+	}
+	else {
+		UIALogger.logFail(testName);
+	}
+}
+
+verifyEmail();
