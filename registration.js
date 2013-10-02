@@ -12,7 +12,7 @@ var screenname = "testy" + n; // default username used when none is passed to Re
 
 var newemail = "test" + n + "@nikeqa.com"; // default username used when none is passed to Register function
 
-var zipcode = "10018";
+var zipcode = "10018"; //just using this variable in case we want to make zip dynamic
 
 // run through entire login process
 {
@@ -44,12 +44,13 @@ var zipcode = "10018";
 
 //Register
 function Register(uname, email) {
-	//window.scrollViews()[0].webViews()[0].logElementTree();
+	
+	//clicks signup button on login page
 	target.delay(3);
 	window.scrollViews()[0].webViews()[0].links()["SIGN UP FOR NIKE+, Don't have a Nike+ account yet?"].tap();
 	target.delay(1);
 	
-	//window.scrollViews()[0].webViews()[0].logElementTree();
+	//enters first name, last name on registration
 	window.scrollViews()[0].webViews()[0].textFields().firstWithPredicate("value like 'First Name'").tap();
 	app.keyboard().typeString("TesterWill");
 	target.delay(1);
@@ -57,6 +58,8 @@ function Register(uname, email) {
 	target.delay(1);
 	app.keyboard().typeString("McTestingtonville");
 	target.delay(1);
+	
+	//enters email and username on registration
 	window.scrollViews()[0].webViews()[0].textFields().firstWithPredicate("value like 'Email Address'").tap();
 	target.delay(1);
 	app.keyboard().typeString(newemail);
@@ -64,6 +67,8 @@ function Register(uname, email) {
 	window.scrollViews()[0].webViews()[0].textFields().firstWithPredicate("value like 'Screen Name'").tap();
 	target.delay(1)
 	app.keyboard().typeString(screenname);
+	
+	//enters Nike1234 as password
 	target.delay(1);
 	window.scrollViews()[0].webViews()[0].secureTextFields()[0].tap();
 	target.delay(1);
@@ -75,7 +80,7 @@ function Register(uname, email) {
 	target.delay(1);
 	
 	//add zip code
-	window.scrollViews()[0].webViews()[0].textFields().firstWithPredicate("value like 'Enter Zip Code'").tap();
+	window.scrollViews()[0].webViews()[0].textfields().firstWithPredicate("value like 'Enter Zip Code'").tap();
 	target.delay(1);
 	app.keyboard().typeString(zipcode);
 	target.delay(1);
