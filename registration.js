@@ -1,6 +1,15 @@
 #import "helper_functions.js"
 #import "login_functions.js"
 
+// to-do
+// verify that we're logged in on the home screen and verify registration info (first and last name, screenname, email)
+// add log message for each action we're doing
+// place all registration entries as variables at top of screen
+// eliminate use of x-y coordinates for picker
+// use array of real zipcodes (randomized)
+
+
+
 var target = UIATarget.localTarget();
 var app = target.frontMostApp();
 var window = app.mainWindow();
@@ -103,6 +112,8 @@ function Register(uname, email) {
 	target.delay(1);
 	
 	window.scrollViews()[0].webViews()[0].buttons()["Sign up"].tap();
+	
+	UIALogger.logMessage("Account created with following e-mail: " + newemail)
 }
 
 
