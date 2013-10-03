@@ -11,17 +11,35 @@ var target = UIATarget.localTarget();
 var app = target.frontMostApp();
 var window = app.mainWindow();
 
+
 var d = new Date();
 var n = d.getTime();
 
 var screenname = "testy" + n; // default username used when none is passed to Register function
-
 var newemail = "test" + n + "@nikeqa.com"; // default username used when none is passed to Register function
-
 var zipcode = "10018"; //just using this variable in case we want to make zip dynamic
 var fname = "TesterWill"; //just using this variable in case we want to make firstname dynamic
 var lname = "McTestingville"; //just using this variable in case we want to make lastname dynamic
+var fullname = fname + " " + lname;
 
+
+//verify_email
+function verifyNewUser() {
+	UIALogger.logMessage("in method.");
+	if (window.tableViews()[2].staticTexts()[newemail].checkIsValid()) {
+		UIALogger.logMessage("passed first if.");
+		UIALogger.logPass(testName + "Level 1 only");
+		if (window.tableViews()[1].staticTexts()[fullname].checkIsValid()) {
+			UIALogger.logPass(testName + "Full name");
+		} else {
+		UIALogger.logFail(testName + "Failed at full name");	
+		} // end name/email check	
+	} else {
+		UIALogger.logMessage("Failed in method level 1.");
+		UIALogger.logFail(testName);
+	}
+}
+	
 // run through entire login process
 
 	//begin_logging
@@ -50,7 +68,7 @@ var lname = "McTestingville"; //just using this variable in case we want to make
 
 
 //Register
-function Register(uname, email) {
+function Register() {
 	
 	//clicks signup button on login page
 	target.delay(3);
@@ -118,8 +136,11 @@ function Register(uname, email) {
 	target.delay(1);
 	
 	window.scrollViews()[0].webViews()[0].buttons()["Sign up"].tap();
-	logMessage ("Taking Screen Capture");
-	captureScreen("Register screen capture");
+	target.delay(7);
 	
-	UIALogger.logMessage("Account created with following e-mail: " + newemail)
+//	target.frontMostApp().mainWindow().tableViews()[1].tap();
+		
+//	verifyNewUser(); 
+	
+	UIALogger.logMessage("Account created with following e-mail: " + newemail);
 }
