@@ -7,7 +7,7 @@
 #import "../screens/run_setup.js"
 
 var target = UIATarget.localTarget();
-/*
+
 //log in as "edwin@botomat.com; Passw0rd"
 var a = on_welcome_screen();
 if (on_welcome_screen()){
@@ -24,7 +24,7 @@ touch_login();
 touch_login_with_nikeplus();
 enter_username_and_password("edwin@botomat.com", "Passw0rd");
 target.delay(3);
-*/
+
 //user navigates to run setup
 touch_run();
 dismiss_cheers_if();
@@ -56,8 +56,6 @@ get_cheers_path_button_tap();
 
 /*
 to-do:
-- open/close learn more about friend tagging
-- tag location: search
 - tag friends: assert # friend(s) selected
 - tag friends: remove all friends
 */

@@ -85,7 +85,7 @@ function get_cheers_search_and_tag_friend(buddy){
 	target.frontMostApp().mainWindow().searchBars()[0].tap();
 	target.frontMostApp().keyboard().typeString(buddy);
 	target.frontMostApp().keyboard().typeString("\n");
-	//target.frontMostApp().mainWindow().tableViews()["Empty list"].cells().withPredicate(buddy).tap();
+	//target.frontMostApp().mainWindow().tableViews()["Empty list"].cells().withPredicate(buddy).tap(); <-- can't get this to work. someone give it a shot.
 	target.frontMostApp().mainWindow().tableViews()["Empty list"].cells()[0].tap();
 	target.frontMostApp().navigationBar().buttons()["Done"].tap();
 }
