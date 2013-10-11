@@ -95,7 +95,7 @@ function learn_more_tag_friends_screen(){
 		(target.frontMostApp().mainWindow().buttons()["tag friends close"]).tap;
 		}
 	else {
-		get_cheers_search_and_tag_friend("weisenborn");
+		get_cheers_search_and_tag_friend(buddy);
 		}
 }
 
