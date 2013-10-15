@@ -26,7 +26,7 @@ var fullname = fname + " " + lname;
 //verify_email
 function verifyNewUser() {
 	UIALogger.logMessage("in method.");
-	if (window.tableViews()[2].staticTexts()[newemail].checkIsValid()) {
+	if (window.tableViews()[1].staticTexts()[newemail].checkIsValid()) {
 		UIALogger.logMessage("passed first if.");
 		UIALogger.logPass(testName + "Level 1 only");
 		if (window.tableViews()[1].staticTexts()[fullname].checkIsValid()) {
@@ -138,9 +138,9 @@ function Register() {
 	window.scrollViews()[0].webViews()[0].buttons()["Sign up"].tap();
 	target.delay(7);
 	
-//	target.frontMostApp().mainWindow().tableViews()[1].tap();
+	target.frontMostApp().mainWindow().tableViews()[1].tap();
 		
-//	verifyNewUser(); 
+	verifyNewUser(); 
 	
 	UIALogger.logMessage("Account created with following e-mail: " + newemail);
 }
